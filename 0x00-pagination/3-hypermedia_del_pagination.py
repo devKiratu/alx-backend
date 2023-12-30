@@ -49,7 +49,7 @@ class Server:
         working_index = -1 if index is None else index
 
         # verify that index is in a valid range.
-        assert working_index > 0
+        assert working_index >= 0
         assert working_index < len(data)
 
         actual_data = []
