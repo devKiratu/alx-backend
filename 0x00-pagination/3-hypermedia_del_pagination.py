@@ -46,7 +46,7 @@ class Server:
         Implements deletion-resilient pagination
         """
         data = self.indexed_dataset()
-        working_index = -1 if index is None else index
+        working_index = 0 if index is None else index
 
         # verify that index is in a valid range.
         assert working_index >= 0
