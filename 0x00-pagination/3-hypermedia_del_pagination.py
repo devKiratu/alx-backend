@@ -62,8 +62,8 @@ class Server:
 
         result = {
             'index': working_index,
-            'next_index': current_index,
+            'data': actual_data,
             'page_size': page_size,
-            'data': actual_data
+            'next_index': current_index,
         }
         return result
