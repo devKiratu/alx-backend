@@ -52,17 +52,17 @@ class Server:
         assert working_index > 0
         assert working_index < len(data)
 
-        next_index = None if (working_index + page_size) > len(data)\
-            else (working_index + page_size)
-
         actual_data = []
-
-        for i in range(working_index, working_index + page_size):
-            actual_data.append(data.get(i))
+        current_index = working_index
+        while len(actual_data) < page_size:
+            user = data.get(current_index)
+            if user is not None:
+                actual_data.append(user)
+            current_index += 1
 
         result = {
             'index': working_index,
-            'next_index': next_index,
+            'next_index': current_index,
             'page_size': page_size,
             'data': actual_data
         }
