@@ -7,7 +7,17 @@ from flask_babel import Babel
 
 
 app = Flask(__name__)
-babel = Babel(app)
+babel = Babel(app, default_timezone="UTC", default_locale="en")
+
+
+class Config:
+    """
+    houses Babel configurations
+    """
+    LANGUAGES = ["en", "fr"]
+
+
+app.config.from_object(Config)
 
 
 @app.route('/')
@@ -16,10 +26,3 @@ def index():
     Flask app entry point for route /
     """
     return render_template('1-index.html')
-
-
-class Config:
-    """
-    houses Babel configurations
-    """
-    LANGUAGES = ["en", "fr"]
