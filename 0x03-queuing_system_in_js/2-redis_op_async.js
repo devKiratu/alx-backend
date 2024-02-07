@@ -3,13 +3,15 @@ import { promisify } from 'util';
 
 const client = createClient();
 const asyncGet = promisify(client.get).bind(client);
+const asyncSet = promisify(client.set).bind(client);
 
 client
   .on('ready', () => console.log('Redis client connected to the server'))
   .on('error', (err) => console.log(`Redis client not connected to the server: ${err}`));
 
-function setNewSchool (schoolName, value) {
-  client.set(schoolName, value, print);
+async function setNewSchool (schoolName, value) {
+  const res = await asyncSet(schoolName, value);
+  print(null, res);
 }
 
 async function displaySchoolValue (schoolName) {
