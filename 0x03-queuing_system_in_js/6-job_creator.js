@@ -3,8 +3,8 @@ import { createQueue } from 'kue';
 const queue = createQueue();
 
 const jobData = {
-  phoneNumber: '123456',
-  message: 'hello kue'
+  phoneNumber: '4153518780',
+  message: 'This is the code to verify your account'
 };
 
 const job = queue.createJob('push_notification_code', jobData).save((err) => {
